@@ -1,0 +1,35 @@
+<script setup>
+import { useBebidaStore } from "@/stores/bebidas";
+
+const store = useBebidaStore();
+
+defineProps({
+    receta: {
+        type: Object,
+    },
+});
+</script>
+
+<template>
+    <div class="border shadow-lg">
+        <div class="overflow-hidden">
+            <img
+                :src="receta.strDrinkThumb"
+                :alt="receta.strDrink"
+                class="hover:scale-125 transition-transform hover:rotate-2 duration-500"
+            />
+        </div>
+        <div class="p-5">
+            <h2 class="text-2xl truncate font-extrabold">
+                {{ receta.strDrink }}
+            </h2>
+            <button
+                type="button"
+                class="bg-orange-400 hover:bg-orange-500 mt-5 w-full p-3 font-bold text-white text-lg"
+                @click="store.seleccionarBebida(receta.idDrink)"
+            >
+                Ver Receta
+            </button>
+        </div>
+    </div>
+</template>
